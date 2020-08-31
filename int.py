@@ -224,16 +224,18 @@ try:
 			n = v(x[1], x[2])
 			if n in d:
 				print("\x1b[%sm" % (d[n]), end="")
-			elif n == 36:
-				print("\x1b[%sA" % int(x[3], 4), end="")
-			elif n == 37:
-				print("\x1b[%sB" % int(x[3], 4), end="")
-			elif n == 38:
-				print("\x1b[%sC" % int(x[3], 4), end="")
-			elif n == 39:
-				print("\x1b[%sD" % int(x[3], 4), end="")
 			elif n == 40:
 				system("cls")
+			else:
+				check(3)
+				if n == 36:
+					print("\x1b[%sA" % int(x[3], 4), end="")
+				elif n == 37:
+					print("\x1b[%sB" % int(x[3], 4), end="")
+				elif n == 38:
+					print("\x1b[%sC" % int(x[3], 4), end="")
+				elif n == 39:
+					print("\x1b[%sD" % int(x[3], 4), end="")
 
 		elif t == "33":
 			print(eval(" ".join(x[1:])), end="")
