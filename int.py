@@ -24,8 +24,6 @@ data, c = loadf(), 0
 if data is None:
 	exit(1)
 
-# ================ #
-
 def check(no):
 	if len(x) <= no:
 		print("\x1b[31;1mNot enough arguments at line %s (must be at least %s)\x1b[0m" % (c + 1, no))
@@ -79,8 +77,6 @@ d = {
 	32: 0, 33: 1, 34: 4, 35: 7
 }
 del idx
-
-# ================ #
 
 try:
 	while c < len(data):
