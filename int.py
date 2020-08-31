@@ -232,6 +232,8 @@ try:
 				print("\x1b[%sC" % int(x[3], 4), end="")
 			elif n == 39:
 				print("\x1b[%sD" % int(x[3], 4), end="")
+			elif n == 40:
+				system("cls")
 
 		elif t == "33":
 			print(eval(" ".join(x[1:])), end="")
