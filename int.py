@@ -99,9 +99,8 @@ try:
 					stack.append(stack[-1])
 
 		elif t == "03":
-			n = num(x[1:])
-			if len(stack) > n - 1:
-				stack.append(stack.pop(-n))
+			if len(stack) > 1:
+				stack.append(stack.pop(-2))
 
 		elif t == "11":
 			lb = num(x[1:])
@@ -117,34 +116,43 @@ try:
 				if x[1] == "00":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a + b) % 256)
+					carry = (a + b) // 256
 				elif x[1] == "01":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a - b) % 256)
+					carry = (a - b) // 256
 				elif x[1] == "02":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a * b) % 256)
+					carry = (a * b) // 256
 				elif x[1] == "03":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a // b) % 256)
+					carry = 0
 				elif x[1] == "10":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a % b) % 256)
+					carry = 0
 				elif x[1] == "11":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a ** b) % 256)
+					carry = (a ** b) // 256
 				elif x[1] == "12":
-					check(2)
 					b, a = stack.pop(-1), stack.pop(-1)
-					stack.append(int(a ** (1 / b)) * (10 ** x[2]) % 256)
+					stack.append(int(a ** (1 / b)) % 256)
+					carry = 0
 				elif x[1] == "13":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a & b) % 256)
+					carry = 0
 				elif x[1] == "20":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a | b) % 256)
+					carry = 0
 				elif x[1] == "21":
 					b, a = stack.pop(-1), stack.pop(-1)
 					stack.append((a ^ b) % 256)
+					carry = 0
 
 		elif t == "20":
 			check(1)
@@ -232,5 +240,9 @@ try:
 		c = c + 1
 except KeyboardInterrupt:
 	pass
+except:
+	print("\x1b[31;1mSomething went wrong...\nPlease check syntax of your code\x1b[0m")
+	system("pause > nul")
+	exit(1)
 
 print("\x1b[0m")
